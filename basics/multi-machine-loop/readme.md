@@ -26,8 +26,7 @@ To bring up a single machine you need to tell Vagrant which machine you would li
 vagrant up web2
 ```
 
-
-## To Run the Demo
+## Removing all VMs
 Vagrant destroy removes the VM from your local hypervisor. The `-- force` argrument bypasses the prompt asking you to approve each VM being removed.
 
 ```

@@ -1,0 +1,18 @@
+Vagrant.configure(2) do |config|
+  config.vm.box = "base"
+  
+  config.vm.define "vm001" do |node|
+    node.vm.hostname = "vm001"
+    node.vm.network "private_network", ip: "10.4.1.101"
+  end
+
+  config.vm.define "vm002" do |node|
+    node.vm.hostname = "vm002"
+    node.vm.network "private_network", ip: "10.4.1.102"
+  end
+  
+  config.vm.define "vm003" do |node|
+    node.vm.hostname = "vm003"
+    node.vm.network "private_network", ip: "10.4.1.103"
+  end
+end

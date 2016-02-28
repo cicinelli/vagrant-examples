@@ -4,8 +4,10 @@ These basic examples help to describe some simple concepts that could help you i
 1. ./basics/init - default output of vagrant init
 1. ./basics/init-minimal - default output using the minimal argrument
 1. ./basics/multi-machine - running more than one VM with a single Vagrantfile
-1. ./basics/multi-machine - running more than one VM with a single Vagrantfile using a loop
-
+1. ./basics/multi-machine-loop - running more than one VM with a single Vagrantfile using a loop
+1. ./basics/network-ip - defining IP addresses for your VMs
+1. ./basics/network-port-mapping - TBD
+1. ./basics/mounts - TBD
 
 ## Consult the Source
 The most up-to-date information can be found through the following means:
