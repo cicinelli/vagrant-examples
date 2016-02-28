@@ -2,7 +2,9 @@
 These basic examples help to describe some simple concepts that could help you in deciding how to structure your Vagrantfile based on your needs.
 
 1. ./basics/init - default output of vagrant init
-2. ./basics/init-minimal - default output using the minimal argrument 
+1. ./basics/init-minimal - default output using the minimal argrument
+1. ./basics/multi-machine - running more than one VM with a single Vagrantfile
+1. ./basics/multi-machine - running more than one VM with a single Vagrantfile using a loop
 
 
 ## Consult the Source
