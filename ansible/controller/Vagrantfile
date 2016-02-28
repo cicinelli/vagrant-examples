@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "bento/centos-7.1"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+  end
+
+  config.vm.define "ansible" do |node|
+    node.vm.hostname = "ansible"
+    node.vm.network "private_network", ip: "10.1.1.10"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "EXAMPLE-ansible"
+    end
+    node.vm.provision "shell" do |s|
+      s.path = "install_ansible.sh"
+      s.privileged = false
+    end
+  end
+
+  config.vm.define "ansibledevel" do |node|
+    node.vm.hostname = "ansibledevel"
+    node.vm.network "private_network", ip: "10.1.1.11"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "EXAMPLE-ansibledevel"
+    end
+    node.vm.provision "shell" do |s|
+      s.path = "install_ansible_devel.sh"
+      s.privileged = false
+    end
+  end
+
+  (51 .. 52).each do |i|
+    config.vm.define "lclwb#{i}" do |node|
+      node.vm.hostname = "lclwb#{i}"
+      node.vm.network "private_network", ip: "10.5.1.#{i}"
+      node.vm.provider "virtualbox" do |v|
+        v.name = "EXAMPLE-lclwb#{i}"
+      end
+    end
+  end
+
+  config.vm.define "lclap01" do |node|
+    node.vm.hostname = "lclap01"
+    node.vm.network "private_network", ip: "10.5.2.10"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "EXAMPLE-lclap01"
+    end
+  end
+
+  config.vm.define "lcldb01" do |node|
+    node.vm.hostname = "lcldb01"
+    node.vm.network "private_network", ip: "10.5.3.10"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "EXAMPLE-lcldb01"
+      v.memory = 2048
+    end
+  end
+end
