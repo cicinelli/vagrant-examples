@@ -1,6 +1,6 @@
 # Vagrant Basic Examples - Init
 
-Running `vagrant init` will create a version of the VAGRANTFILE containing commneted example parameters and a config parameter defining the vagrant box as base `config.vm.box = "base"`. The default base vagratn box is defined by the version of Vagrant being used. Vagrant version 1.7.4 uses the Ubuntu Precise 32-bit VM.
+Running `vagrant init` will create a version of the VAGRANTFILE containing commented example parameters and a config parameter defining the vagrant box as base `config.vm.box = "base"`. The default base vagratn box is defined by the version of Vagrant being used. Vagrant version 1.7.4 uses the Ubuntu Precise 32-bit VM.
 
 ## To Run the Demo
 ```
