@@ -1,0 +1,22 @@
+Vagrant.configure(2) do |config|
+  config.vm.box = "base"
+
+  # remove the devault vagrant mount in all VMs
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  
+  config.vm.define "vm001" do |node|
+    node.vm.hostname = "vm001"
+    node.vm.synced_folder "./sync/app1", "/var/app"
+  end
+
+  config.vm.define "vm002" do |node|
+    node.vm.hostname = "vm002"
+    node.vm.synced_folder "./sync/app2", "/var/app"
+  end
+  
+  config.vm.define "vm003" do |node|
+    node.vm.hostname = "vm003"
+    node.vm.synced_folder "./sync/app3", "/var/app"
+  end
+end
+
