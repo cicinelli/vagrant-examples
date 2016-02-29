@@ -6,7 +6,7 @@ These basic examples help to describe some simple concepts that could help you i
 1. ./basics/multi-machine - running more than one VM with a single Vagrantfile
 1. ./basics/multi-machine-loop - running more than one VM with a single Vagrantfile using a loop
 1. ./basics/network-ip - defining IP addresses for your VMs
-<!-- 1. ./basics/network-port-mapping - TBD -->
+[//]: # "1. ./basics/network-port-mapping - TBD"
 1. ./basics/mounts - basic mounted folders examples
 
 ## Consult the Source
