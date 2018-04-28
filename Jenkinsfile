@@ -3,10 +3,10 @@ pipeline {
   stages {
     stage('quality check') {
       parallel {
-        stage('ts lint') {
-          agent any
+        stage('ms code analysis') {
           steps {
-            echo 'Test'
+            echo 'v'
+            input 'Discuss Testing'
           }
         }
         stage('sass lint') {
@@ -14,10 +14,10 @@ pipeline {
             echo 'lint'
           }
         }
-        stage('ms code analysis') {
+        stage('ts lint') {
+          agent any
           steps {
-            echo 'v'
-            input 'Discuss Testing'
+            echo 'Test'
           }
         }
       }
