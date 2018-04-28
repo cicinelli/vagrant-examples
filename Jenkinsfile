@@ -52,13 +52,40 @@ pipeline {
       }
     }
     stage('build') {
-      steps {
-        sh 'ls'
+      parallel {
+        stage('build') {
+          steps {
+            sh 'ls'
+          }
+        }
+        stage('...') {
+          steps {
+            input 'Proceed to publish'
+          }
+        }
       }
     }
     stage('publish') {
-      steps {
-        echo 'push to Artifactory'
+      parallel {
+        stage('docker registry') {
+          steps {
+            echo 'docker.fnis.com'
+            echo 'Azure Container Registry'
+            echo 'Amazon Elastic Container Registry'
+          }
+        }
+        stage('...') {
+          steps {
+            input 'Proceed to deploy'
+          }
+        }
+        stage('package repos') {
+          steps {
+            echo 'npm'
+            echo 'maven'
+            echo 'nuget'
+          }
+        }
       }
     }
     stage('deploy cert') {
