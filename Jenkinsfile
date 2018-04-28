@@ -1,25 +1,44 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      steps {
-        sh 'ls'
-      }
-    }
-    stage('Unit Test') {
+    stage('quality check') {
       agent any
       steps {
         echo 'Test'
       }
     }
-    stage('Publish') {
+    stage('unit test') {
+      agent any
       steps {
-        echo 'Push to Artifactory'
+        echo 'Test'
       }
     }
-    stage('Quality') {
+    stage('build') {
       steps {
-        echo 'Push SonarQube'
+        sh 'ls'
+      }
+    }
+    stage('publish') {
+      steps {
+        echo 'push to Artifactory'
+      }
+    }
+    stage('deploy cert') {
+      steps {
+        echo 'deploy DevLabs'
+        echo 'validate deployment'
+      }
+    }
+    stage('deploy uat') {
+      steps {
+        echo 'deploy azure'
+        echo 'validate deployment'
+      }
+    }
+    stage('deploy prod') {
+      steps {
+        echo 'deploy azure'
+        echo 'validate deployment'
       }
     }
   }
