@@ -17,6 +17,7 @@ pipeline {
         stage('ms code analysis') {
           steps {
             echo 'v'
+            input 'Discuss Testing'
           }
         }
       }
