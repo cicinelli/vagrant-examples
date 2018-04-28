@@ -23,9 +23,18 @@ pipeline {
       }
     }
     stage('unit test') {
-      agent any
-      steps {
-        echo 'Test'
+      parallel {
+        stage('unit test') {
+          agent any
+          steps {
+            echo 'Test'
+          }
+        }
+        stage('jasmin') {
+          steps {
+            echo 'blah'
+          }
+        }
       }
     }
     stage('build') {
