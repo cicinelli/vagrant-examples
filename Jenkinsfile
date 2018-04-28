@@ -14,6 +14,7 @@ pipeline {
               validateDeclarativePipeline 'prod'
             }
 
+            input(message: 'Go Ahead', id: 'go1')
           }
         }
       }
