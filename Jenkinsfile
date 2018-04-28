@@ -1,10 +1,23 @@
 pipeline {
-    agent any
-    stages {
+  agent any
+  stages {
+    stage('build') {
+      parallel {
         stage('build') {
-            steps {
-                sh 'ls'
-            }
+          steps {
+            sh 'ls'
+          }
         }
+        stage('Test') {
+          steps {
+            waitUntil() {
+              jiraIssueSelector()
+              validateDeclarativePipeline 'prod'
+            }
+
+          }
+        }
+      }
     }
+  }
 }
