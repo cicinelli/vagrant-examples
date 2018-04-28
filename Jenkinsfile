@@ -3,18 +3,18 @@ pipeline {
   stages {
     stage('quality check') {
       parallel {
-        stage('quality check') {
+        stage('ts lint') {
           agent any
           steps {
             echo 'Test'
           }
         }
-        stage('Linters') {
+        stage('sass lint') {
           steps {
             echo 'lint'
           }
         }
-        stage('validators') {
+        stage('ms code analysis') {
           steps {
             echo 'v'
           }
