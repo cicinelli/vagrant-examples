@@ -3,21 +3,25 @@ pipeline {
   stages {
     stage('quality check') {
       parallel {
-        stage('ms code analysis') {
+        stage('linters') {
           steps {
-            echo 'v'
-            input 'Discuss Testing'
+            echo 'ts lint'
+            echo 'sass lint'
+            echo 'jenkins pipeline lint'
+            echo 'ansible lint'
+            echo 'etc.'
           }
         }
-        stage('sass lint') {
+        stage('code analysis') {
           steps {
-            echo 'lint'
+            echo 'Microsoft Code Analysis'
           }
         }
-        stage('ts lint') {
+        stage('...') {
           agent any
           steps {
             echo 'Test'
+            input 'Discuss Testing'
           }
         }
       }
@@ -27,15 +31,20 @@ pipeline {
         stage('unit test') {
           agent any
           steps {
-            echo 'Test'
+            echo 'nunit'
+            echo 'junit'
+            echo 'jasmin'
+            echo 'karma'
+            echo 'jest'
+            echo 'pyunit'
           }
         }
-        stage('jasmin') {
+        stage('code coverage reporting') {
           steps {
-            echo 'blah'
+            echo 'unit test tool dependent'
           }
         }
-        stage('etc') {
+        stage('...') {
           steps {
             input 'Proceed to build'
           }
