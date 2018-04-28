@@ -2,9 +2,23 @@ pipeline {
   agent any
   stages {
     stage('quality check') {
-      agent any
-      steps {
-        echo 'Test'
+      parallel {
+        stage('quality check') {
+          agent any
+          steps {
+            echo 'Test'
+          }
+        }
+        stage('Linters') {
+          steps {
+            echo 'lint'
+          }
+        }
+        stage('validators') {
+          steps {
+            echo 'v'
+          }
+        }
       }
     }
     stage('unit test') {
