@@ -53,30 +53,42 @@ pipeline {
     }
     stage('build') {
       parallel {
-        stage('build') {
-          steps {
-            sh 'ls'
-          }
-        }
         stage('...') {
           steps {
             input 'Proceed to publish'
+          }
+        }
+        stage('compilers') {
+          steps {
+            echo 'msbuild'
+            echo 'javac'
+            echo 'maven'
+            echo 'cobol'
+
+          }
+        }
+        stage('transpilers') {
+          steps {
+            echo 'ng'
+            echo 'webpack'
+            echo 'rollup'
+            echo 'bazel'
           }
         }
       }
     }
     stage('publish') {
       parallel {
+        stage('...') {
+          steps {
+            input 'Proceed to deploy'
+          }
+        }
         stage('docker registry') {
           steps {
             echo 'docker.fnis.com'
             echo 'Azure Container Registry'
             echo 'Amazon Elastic Container Registry'
-          }
-        }
-        stage('...') {
-          steps {
-            input 'Proceed to deploy'
           }
         }
         stage('package repos') {
