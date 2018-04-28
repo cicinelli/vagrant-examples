@@ -2,41 +2,24 @@ pipeline {
   agent any
   stages {
     stage('build') {
-      parallel {
-        stage('build') {
-          steps {
-            sh 'ls'
-          }
-        }
-        stage('Test') {
-          steps {
-            waitUntil() {
-              validateDeclarativePipeline 'prod'
-            }
-
-            input(message: 'Go Ahead', id: 'go1')
-          }
-        }
+      steps {
+        sh 'ls'
       }
     }
     stage('Unit Test') {
-      parallel {
-        stage('Unit Test') {
-          agent {
-            node {
-              label 'nodejs'
-            }
-
-          }
-          steps {
-            echo 'Test'
-          }
-        }
-        stage('E2E Test') {
-          steps {
-            echo 'Execute E2E'
-          }
-        }
+      agent any
+      steps {
+        echo 'Test'
+      }
+    }
+    stage('Publish') {
+      steps {
+        echo 'Push to Artifactory'
+      }
+    }
+    stage('Quality') {
+      steps {
+        echo 'Push SonarQube'
       }
     }
   }
