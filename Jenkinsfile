@@ -19,5 +19,25 @@ pipeline {
         }
       }
     }
+    stage('Unit Test') {
+      parallel {
+        stage('Unit Test') {
+          agent {
+            node {
+              label 'nodejs'
+            }
+
+          }
+          steps {
+            echo 'Test'
+          }
+        }
+        stage('E2E Test') {
+          steps {
+            echo 'Execute E2E'
+          }
+        }
+      }
+    }
   }
 }
