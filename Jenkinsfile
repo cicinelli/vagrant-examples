@@ -11,7 +11,6 @@ pipeline {
         stage('Test') {
           steps {
             waitUntil() {
-              jiraIssueSelector()
               validateDeclarativePipeline 'prod'
             }
 
