@@ -35,6 +35,11 @@ pipeline {
             echo 'blah'
           }
         }
+        stage('etc') {
+          steps {
+            input 'Proceed to build'
+          }
+        }
       }
     }
     stage('build') {
